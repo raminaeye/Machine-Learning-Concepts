@@ -1,89 +1,87 @@
-# Machine Learning Concepts 
+# Machine Learning Concepts
 
-### Author : Ramin Anushiravani
+Implementations of common machine learning algorithms in NumPy and PyTorch, written for learning. Each notebook builds one algorithm from scratch (or close to it), trains it on synthetic or public data, and visualizes what it learned.
 
-Updates : Sep 10th , 2023
+Author: Ramin Anushiravani
 
+## Notebooks
 
-### Implementation of common ML algorithms in Numpy or Pytorch. This is purley for educational purposes. All notebooks should run propely. I tried my best to implement most of the following models from scratch using numpy or pytroch. 
+### Regression (`notebooks/regression/`)
 
-### Models and Algorithms
+* `Linear_Regression.ipynb`: linear regression with gradient descent and L2 regularization in NumPy, polynomial features, and the closed-form ridge solution
+* `Linear and Non-Linear Regression Pytorch.ipynb`: linear regression in PyTorch, then why linear models fail on nonlinear data and how ReLU networks fix it
+* `Logistic_Regression.ipynb`: multiclass logistic regression from scratch in NumPy on the Iris dataset
+* `Logistic_Regression_Pytorch.ipynb`: logistic regression vs small neural networks on the two-moons dataset, with decision boundaries, ROC, and confusion matrices
+* `Logistic_Regression_SimpleNN_Pytorch.ipynb`: overfitting on purpose with an oversized network, then fixing it with L1 regularization, L2 regularization, and dropout
 
-### Regression
+### Trees (`notebooks/trees/`)
 
-    * Linear regression   
+* `Decision_tree.ipynb`: entropy, information gain, and Gini impurity worked through by hand on Iris
+* `decision_tree-random-forest-pytorch.ipynb`: decision tree and random forest from scratch in PyTorch
+* `gradient_boosting-pytorch.ipynb`: gradient boosted trees from scratch in PyTorch
 
-           Linear_Regression.ipynb , Linear and Non-Linear Regression Pytorch.ipynb
+### Support Vector Machines (`notebooks/svm/`)
 
-    * Logistic regression 
+* `svm-pytorch.ipynb`: a neural network trained with the hinge loss (the SVM objective) on synthetic data
 
-            Logistic_Regression.ipynb , Logistic_Regression_SimpleNN_Pytorch.ipynb , Logistic_Regression_Pytorch.ipynb
-### Trees 
-            
-    * Decision tree and Random forest algorithm
+### Naive Bayes (`notebooks/naive-bayes/`)
 
-        decision_tree-random-forest-pytorch.ipynb
-        
-    * Gradient Boosting algorithm
+* `Naive Bayes.ipynb`: multinomial naive Bayes with Laplace smoothing from scratch on the 20 Newsgroups dataset
 
-            gradient_boosting-pytorch.ipynb 
-            
-### SVM 
-        
-    * SVM algorithm
+### K-Nearest Neighbors (`notebooks/knn/`)
 
-            svm-pytorch.ipynb
-            
-### Naive Bayes
+* `k-nearest-pytorch.ipynb`: k-NN classification in PyTorch with decision boundary plots showing the effect of k on overfitting
 
-    * Naive Bayes algorithm
+### K-Means (`notebooks/kmeans/`)
 
-            Naive Bayes.ipynb
-            
-### KNN
-        
-    * KNN algorithm  
+* `k-means_numpy.ipynb` and `k-means_pytorch.ipynb`: k-means clustering from scratch in NumPy and in PyTorch
 
-            k-nearest-pytorch.ipynb
-        
-### K means
-        
-    * K-means  
+### Dimensionality Reduction (`notebooks/dim-reduce/`)
 
-            k-means_pytorch.ipynb , k-means_numpy.ipynb
+* `pca.ipynb`: PCA on the Olivetti faces dataset with scikit-learn, then reimplemented from scratch in NumPy (eigenfaces, variance explained)
+* `tsne.ipynb`: placeholder for a from-scratch t-SNE demo
 
+### Neural Networks (`notebooks/neural/`)
 
-### Dim Reduce
+* `backprop_pytorch.ipynb`: manual backpropagation for a small fully connected network, no autograd
+* `RNN_pytorch.ipynb`: char-level LSTM language model trained on a text corpus, with text sampling after each epoch
+* `CNN_pytorch.ipynb`: placeholder for a from-scratch CNN demo
 
-    * Dimensionality Reduction Algorithms
+### Deep Learning Helpers (`notebooks/dl-helpers/`)
 
-            pca.ipynb
-            
-### Neural 
+* `BatchNorm.ipynb`: batch normalization, layer normalization, and dropout from scratch in NumPy, plus a minimal PyTorch training loop
 
-    * Backpropagation
+### Applied Tasks (`notebooks/tasks/`)
 
-            backprop_pytorch.ipynb
+* `Pytorch-Classification.ipynb`: text classification on AG News with torchtext (custom tokenizer, embedding bag classifier)
+* `Recommendation.ipynb`: content-based, collaborative filtering, and hybrid recommenders on the MovieLens dataset
 
-    * RNN  
+## How to run
 
-            TBD
+```bash
+pip install -r requirements.txt
+jupyter notebook
+```
 
-    * CNN 
+Then open any notebook under `notebooks/` and run all cells.
 
-            TBD
-        
-### Tasks 
+Data notes:
 
-    * Text Classification 
+* `data/movies.csv`, `data/ratings.csv`, and `data/training_text.txt` are committed in `data/` and used by the recommendation and RNN notebooks.
+* Some notebooks download public datasets on first run: Olivetti faces and 20 Newsgroups (scikit-learn), AG News (torchtext). You need internet access for those cells.
+* The `.png` files in `data/` are explanatory diagrams shown at the top of several notebooks.
 
-            Pytorch-Classification.ipynb
+Compute notes: most notebooks run in seconds to a few minutes on CPU. The RNN language model, the gradient boosting demo (100 trees), and the manual backprop demo (150k epochs) take noticeably longer.
 
-    * Building a Recommendation System
+## What you will learn
 
-            Recommendation.ipynb
+Each notebook follows the same pattern: build the algorithm from its math, train it, and look at the result. Highlights:
 
+* How gradient descent, backpropagation, and regularization actually work, by implementing them by hand
+* Why linear models fail on nonlinear data and what hidden layers change
+* How trees split (entropy, Gini), and how forests and boosting combine them
+* How embeddings turn text and user/item ids into something a network can learn from
 
-#### Disclaimer
-        
-I used ChatGPT to create definition of the model. You can see the snapshots added to the notebooks. In some cases I used ChatGPT to generate part of the code as well. Although in most cases the code wouldn't run or didn't make sense in many cases it was a good starter. 
+## Disclaimer
+
+Explanatory definitions and diagrams at the top of some notebooks were drafted with ChatGPT and the code was iterated from there. Everything here is for educational purposes.

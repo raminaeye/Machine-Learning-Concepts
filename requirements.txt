@@ -1,0 +1,10 @@
+# Dependencies for the Machine-Learning-Concepts notebooks.
+# Install with: pip install -r requirements.txt
+numpy>=1.24
+matplotlib>=3.7
+torch>=2.0
+scikit-learn>=1.3
+pandas>=2.0
+seaborn>=0.12
+torchtext>=0.15
+jupyter>=1.0
